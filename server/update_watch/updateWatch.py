@@ -22,10 +22,9 @@ def lambda_handler(event, context):
 
     response = table.update_item(
         Key=params,
-        #Note - name is reserved keyword update_item - had to use watchname
         UpdateExpression="set watchname = :n, brand = :b, price = :p",
         ExpressionAttributeValues={
-            ':n': watch['name'],
+            ':n': watch['watchName'],
             ':b': watch['brand'],
             ':p': watch['price']
         },

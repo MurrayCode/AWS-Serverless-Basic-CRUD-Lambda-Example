@@ -17,7 +17,7 @@ def lambda_handler(event, context):
 
     params = {
         'id': str(uuid.uuid4()),
-        'name': watch['name'],
+        'watchName': watch['watchName'],
         'brand': watch['brand'],
         'price': watch['price']
     }
