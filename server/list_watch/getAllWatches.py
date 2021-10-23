@@ -7,9 +7,9 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('watches')
 
 
-def lambda_handler(message, context):
-    if ('httpMethod' not in message or
-            message['httpMethod'] != 'GET'):
+def lambda_handler(event, context):
+    if ('httpMethod' not in event or
+            event['httpMethod'] != 'GET'):
         return {
             'statusCode': 400,
             'headers': {},

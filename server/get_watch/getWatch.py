@@ -5,15 +5,15 @@ import json
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('watches')
 
-def lambda_handler(message, context):
-    if ('pathParameters' not in message or
-            message['httpMethod'] != 'GET'):
+def lambda_handler(event, context):
+    if ('pathParameters' not in event or
+            event['httpMethod'] != 'GET'):
         return {
             'statusCode': 400,
             'headers': {},
             'body': json.dumps({'msg': 'Bad Request'})
         }
-    watch_id = message['pathParameters']['id']
+    watch_id = event['pathParameters']['id']
 
     response = table.query(
         KeyConditionExpression=Key('id').eq(watch_id)
